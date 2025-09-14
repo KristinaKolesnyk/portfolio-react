@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="added &quot;project&quot; section">
+    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="working nav bar">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Portfolio.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Portfolio.jsx" afterDir="false" />
     </list>
@@ -38,6 +38,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "JavaScript Debug.Debug Application.executor": "Debug",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
@@ -75,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757809977934</updated>
-      <workItem from="1757809979027" duration="10709000" />
+      <workItem from="1757809979027" duration="13419000" />
     </task>
     <task id="LOCAL-00001" summary="rearrenged &quot;about&quot; section">
       <option name="closed" value="true" />
@@ -93,7 +94,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757884165954</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="working nav bar">
+      <option name="closed" value="true" />
+      <created>1757885781952</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1757885781952</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -102,6 +111,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="rearrenged &quot;about&quot; section" />
     <MESSAGE value="added &quot;project&quot; section" />
-    <option name="LAST_COMMIT_MESSAGE" value="added &quot;project&quot; section" />
+    <MESSAGE value="working nav bar" />
+    <option name="LAST_COMMIT_MESSAGE" value="working nav bar" />
   </component>
 </project>
