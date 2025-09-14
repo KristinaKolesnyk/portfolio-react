@@ -1,4 +1,6 @@
 import React, {useEffect, useMemo, useState, useRef} from "react";
+import imgRanker from "./assets/projects/ranker.jpg";
+import profileImg from "./assets/profile.jpg";
 import {motion} from "framer-motion";
 import {
     Mail,
@@ -60,18 +62,16 @@ const PROJECTS = [
         blurb:
             "Full-stack web app to help users make decisions by ranking items in lists and head-to-head tournaments. Responsive React frontend with real-time updates and visual feedback; secure backend with REST API, auth, and PostgreSQL.",
         tags: ["React", "Node", "Express", "PostgreSQL", "Auth"],
-        image:
-            "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1200&auto=format&fit=crop",
-        demo: "#",
-        repo: "#",
+        image: imgRanker,
+        demo: "https://drive.google.com/file/d/1VphzLdFyHtjBdn0MP5WybtCAW-bC7GQY/view?usp=sharing",
+        repo: "https://github.com/KristinaKolesnyk/Ranker",
     },
     {
         title: "PlanIt",
         blurb:
             "Trip and list planning with filters, ratings, and comments. React + Express + PostgreSQL.",
         tags: ["React", "Express", "PostgreSQL", "Knex"],
-        image:
-            "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+        image: imgRanker,
         demo: "#",
         repo: "#",
     },
@@ -80,8 +80,7 @@ const PROJECTS = [
         blurb:
             "Technical documentation site: MDX content, search, versioning, and code samples.",
         tags: ["Docs", "MDX", "Search"],
-        image:
-            "https://images.unsplash.com/photo-1526378722484-bd91ca387e72?q=80&w=1200&auto=format&fit=crop",
+        image: imgRanker,
         demo: "#",
         repo: "#",
     },
@@ -157,8 +156,8 @@ const scrollToId = (id) => {
 function Shell({children, dark, setDark}) {
     return (
         <div className={cx(
-            "min-h-dvh text-slate-800 bg-slate-50 font-poppins",
-            dark && "dark bg-slate-900 text-slate-100"
+            "min-h-dvh font-poppins bg-slate-50 text-ink",
+            dark && "dark bg-slate-900"
         )}>
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">{children}</div>
         </div>
@@ -178,7 +177,7 @@ function Section({id, title, eyebrow, children}) {
             >
                 {eyebrow && (
                     <div
-                        className="text-sm uppercase tracking-widest text-slate-500 dark:text-slate-400">{eyebrow}</div>
+                        className="text-sm uppercase tracking-widest text-muted">{eyebrow}</div>
                 )}
                 {title && (
                     <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">{title}</h2>
@@ -241,7 +240,7 @@ function PrimaryButton({children, onClick, href, Icon = ArrowRight}) {
     return (
         <Comp
             {...props}
-            className="inline-flex items-center gap-2 rounded-2xl shadow-sm bg-slate-900 text-white dark:bg-white dark:text-slate-900 px-4 py-2 text-sm font-medium hover:translate-y-[-1px] hover:shadow md:text-base"
+            className="inline-flex items-center gap-2 rounded-2xl shadow-sm  bg-brand text-surface2 dark:bg-brand dark:text-surface2 px-4 py-2 text-sm font-medium hover:translate-y-[-1px] hover:shadow md:text-base"
         >
             {children} <Icon className="h-4 w-4"/>
         </Comp>
@@ -252,7 +251,7 @@ function GhostButton({children, onClick, Icon = ArrowRight}) {
     return (
         <button
             onClick={onClick}
-            className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm hover:bg-slate-100/60 dark:hover:bg-slate-800"
+            className="inline-flex items-center gap-2 rounded-2xl border border-border px-4 py-2 text-sm hover:bg-ink/5"
         >
             {children} <Icon className="h-4 w-4"/>
         </button>
@@ -283,9 +282,8 @@ export default function Portfolio() {
             <Section id="about">
                 <HeadlineDivider text="about"/>
                 <Card>
-                    <p className="text-slate-300">
-                        I’m a frontend engineer focusing on React, clean UI, accessibility, and performance.
-                        I enjoy building thoughtful experiences and shipping features end-to-end.
+                    <p className="text-ink-300">
+                        Frontend developer focused on making technology simple and enjoyable. I build clean, responsive experiences with React and ship end-to-end features with Node and PostgreSQL — with strong attention to performance, accessibility, and clear communication.
                     </p>
                 </Card>
             </Section>
@@ -293,13 +291,6 @@ export default function Portfolio() {
             {/* WORK */}
             <Section id="work">
                 <HeadlineDivider text="work"/>
-                {/* Можно краткое описание как в макете */}
-                <p className="max-w-3xl text-slate-300 mb-6">
-                    I build, ship, and maintain production UIs with React — with a strong focus on performance,
-                    accessibility, and clean design systems.
-                </p>
-
-                {/* Используем существующий список опыта */}
                 <Experience/>
             </Section>
 
@@ -323,11 +314,11 @@ export default function Portfolio() {
                         <Card key={ed.place}>
                             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                                 <div>
-                                    <div className="text-sm text-slate-500 dark:text-slate-400">{ed.place}</div>
+                                    <div className="text-sm text-ink-500 dark:text-ink-400">{ed.place}</div>
                                     <div className="text-lg font-semibold">{ed.program}</div>
                                 </div>
                                 {ed.period && (
-                                    <div className="text-sm text-slate-500 dark:text-slate-400">{ed.period}</div>
+                                    <div className="text-sm text-ink-500 dark:text-ink-400">{ed.period}</div>
                                 )}
                             </div>
                         </Card>
@@ -338,7 +329,7 @@ export default function Portfolio() {
             {/* CONTACT */}
             <Section id="contact">
                 <HeadlineDivider text="contact me"/>
-                <p className="max-w-3xl text-slate-300 mb-8">
+                <p className="max-w-3xl text-muted mb-8">
                     I would love to hear about your project and how I can help. Feel free to reach out —
                     I’ll get back to you as soon as possible.
                 </p>
@@ -363,7 +354,7 @@ function Navbar({active, onJump, dark, setDark}) {
     ];
 
     return (
-        <header className="sticky top-0 z-50 backdrop-blur bg-slate-900/70 text-white border-b border-white/10">
+        <header className="sticky top-0 z-50 backdrop-blur bg-text-muted text-white border-b border-white/10">
             {/* relative — якорь для absolute; z-0, чтобы ниже центра-меню */}
             <div className="relative z-0 flex items-center justify-end py-3">
                 {/* Centered nav (desktop). z-10 — поверх всего, чтобы клики доходили */}
@@ -377,7 +368,7 @@ function Navbar({active, onJump, dark, setDark}) {
                             onClick={() => onJump(l.id)}
                             className={cx(
                                 "text-[15px] font-medium tracking-normal px-1 transition-colors cursor-pointer",
-                                active === l.id ? "text-brand" : "text-white/90 hover:text-white"
+                                active === l.id ? "text-brand" : "text-ink/90 hover:text-ink"
                             )}
                             aria-current={active === l.id ? "page" : undefined}
                         >
@@ -487,7 +478,7 @@ function Hero() {
         <div className="grid grid-cols-1 items-center gap-10 py-6 sm:grid-cols-[1.1fr_.9fr]">
             {/* Left: text */}
             <div className="space-y-6">
-                <p className="text-[28px] font-medium text-white/90">
+                <p className="text-[28px] font-medium text-ink/90">
                     Hello, I’m {PROFILE.name.split(' ')[0]},
                 </p>
 
@@ -499,7 +490,7 @@ function Hero() {
                     {/* Contact Me — Poppins ExtraBold 26, белый */}
                     <a
                         href="#contact"
-                        className="text-[26px] font-extrabold text-white underline underline-offset-[6px]"
+                        className="text-[26px] font-extrabold text-ink underline underline-offset-[6px]"
                     >
                         Contact Me
                     </a>
@@ -513,9 +504,11 @@ function Hero() {
             {/* Right: portrait */}
             <Card className="relative overflow-hidden bg-slate-800/60">
                 <img
-                    src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=1200&auto=format&fit=crop"
+                    src={profileImg}
                     alt="Portrait"
                     className="h-[420px] w-full rounded-2xl object-cover"
+                    loading="lazy"
+                    decoding="async"
                 />
             </Card>
         </div>
@@ -544,7 +537,7 @@ function SkillsShowcase() {
                     <div className="text-3xl md:text-4xl font-extrabold tracking-tight">
                         {s.title}
                     </div>
-                    <div className="text-[11px] uppercase tracking-widest text-slate-400">
+                    <div className="text-[11px] uppercase tracking-widest text-muted">
                         {s.caption}
                     </div>
                 </div>
@@ -560,10 +553,10 @@ function Experience() {
                 <Card key={e.role}>
                     <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                         <div>
-                            <div className="text-sm text-slate-500 dark:text-slate-400">{e.company}</div>
+                            <div className="text-sm text-muted">{e.company}</div>
                             <div className="text-lg font-semibold">{e.role}</div>
                         </div>
-                        <div className="text-sm text-slate-500 dark:text-slate-400">{e.period}</div>
+                        <div className="text-sm text-muted">{e.period}</div>
                     </div>
                     <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
                         {e.points.map((p, i) => (
@@ -613,7 +606,7 @@ function ProjectsCarousel() {
 
                             <div className="p-5 space-y-2">
                                 <h3 className="text-xl font-semibold">{p.title}</h3>
-                                <p className="text-sm text-slate-400">{p.blurb}</p>
+                                <p className="text-sm text-muted">{p.blurb}</p>
                                 <div className="flex flex-wrap gap-2 pt-1">
                                     {p.tags.map((t) => (
                                         <Badge key={t}>{t}</Badge>
@@ -674,7 +667,7 @@ function Contact() {
             <Card>
                 <div className="space-y-3">
                     <h3 className="text-lg font-semibold">Contact directly</h3>
-                    <p className="text-sm text-slate-300">
+                    <p className="text-sm text-muted">
                         I’d love to hear about your project and how I can help.
                     </p>
 
@@ -732,7 +725,7 @@ function Footer() {
     return (
         <footer className="py-10">
             <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
-                <div className="text-sm text-slate-500 dark:text-slate-400">
+                <div className="text-sm text-muted">
                     © {new Date().getFullYear()} {PROFILE.name}. All rights reserved.
                 </div>
                 <div className="flex items-center gap-3 text-sm">

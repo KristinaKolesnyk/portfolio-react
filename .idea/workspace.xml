@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="working nav bar">
+    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="added education section">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Portfolio.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Portfolio.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +78,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757809977934</updated>
-      <workItem from="1757809979027" duration="13419000" />
+      <workItem from="1757809979027" duration="17852000" />
     </task>
     <task id="LOCAL-00001" summary="rearrenged &quot;about&quot; section">
       <option name="closed" value="true" />
@@ -102,7 +104,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757885781952</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="added education section">
+      <option name="closed" value="true" />
+      <created>1757889220287</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1757889220287</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -112,6 +122,7 @@
     <MESSAGE value="rearrenged &quot;about&quot; section" />
     <MESSAGE value="added &quot;project&quot; section" />
     <MESSAGE value="working nav bar" />
-    <option name="LAST_COMMIT_MESSAGE" value="working nav bar" />
+    <MESSAGE value="added education section" />
+    <option name="LAST_COMMIT_MESSAGE" value="added education section" />
   </component>
 </project>
