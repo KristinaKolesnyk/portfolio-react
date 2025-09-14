@@ -23,12 +23,12 @@ const PROFILE = {
     summary:
         "I build clean, accessible, fast UIs with React. I care about performance, a11y, and users experience.",
     location: "Toronto, ON, Canada",
-    email: "you@example.com",
-    phone: "+1 (000) 000-0000",
+    email: "kkristina.work@gmail.com",
+    phone: "+1 (437) 430-9647",
     resumeUrl: "#", // your resume link
     socials: {
-        github: "https://github.com/your-username",
-        linkedin: "https://www.linkedin.com/in/your-username/",
+        github: "https://github.com/KristinaKolesnyk",
+        linkedin: "https://www.linkedin.com/in/kristina-kolesnyk/",
         website: "https://your-domain.com",
     },
 };
@@ -51,6 +51,13 @@ const SKILLS = [
     "Accessibility (WCAG)",
     "Performance"
 ];
+
+const SKILL_SHOWCASE = [
+    { title: "Front-End", caption: "60+ Hours Experience" },
+    { title: "Python", caption: "4 Years Experience" },
+    { title: "Machine Learning", caption: "120+ Hours Experience" },
+];
+
 
 const PROJECTS = [
     {
@@ -264,7 +271,7 @@ export default function Portfolio() {
             <Navbar active={active} onJump={scrollToId} dark={dark} setDark={setDark}/>
 
             {/* HERO */}
-            <Section id="Home">
+            <Section id="home">
                 <Hero/>
             </Section>
 
@@ -305,13 +312,19 @@ export default function Portfolio() {
             </Section>
 
             {/* SKILLS */}
-            <Section id="skills" title="Skills" eyebrow="Tech stack">
-                <SkillsList/>
+            <Section id="skills">
+                <HeadlineDivider text="skills" />
+                <SkillsShowcase />
             </Section>
 
             {/* CONTACT */}
-            <Section id="contact" title="Contact" eyebrow="Get in touch">
-                <Contact/>
+            <Section id="contact">
+                <HeadlineDivider text="contact me" />
+                <p className="max-w-3xl text-slate-300 mb-8">
+                    I would love to hear about your project and how I can help. Please fill in
+                    the form, and I’ll get back to you as soon as possible.
+                </p>
+                <Contact />
             </Section>
 
             <Footer/>
@@ -319,34 +332,32 @@ export default function Portfolio() {
     );
 }
 
-function Navbar({active, onJump, dark, setDark}) {
+function Navbar({ active, onJump, dark, setDark }) {
     const [open, setOpen] = useState(false);
     const links = [
-        {id: "home", label: "Home"},
-        {id: "about", label: "About"},
-        {id: "work", label: "Work"},
-        {id: "projects", label: "Projects"},
-        {id: "skills", label: "Skills"},
-        {id: "contact", label: "Contact"},
+        { id: "home", label: "Home" },
+        { id: "about", label: "About" },
+        { id: "work", label: "Work" },
+        { id: "projects", label: "Projects" },
+        { id: "skills", label: "Skills" },
+        { id: "contact", label: "Contact" },
     ];
 
     return (
         <header className="sticky top-0 z-50 backdrop-blur bg-slate-900/70 text-white border-b border-white/10">
-            {/* ВАЖНО: relative — чтобы центр-меню позиционировалось от этого контейнера */}
-            <div className="relative flex items-center justify-between py-3">
-                {/* Left brand */}
-                <div onClick={() => onJump("home")} className="cursor-pointer select-none">
-                    <div className="text-base font-semibold">Kristina</div>
-                </div>
-
-                {/* Centered nav (desktop) — только пункты меню, без переключателя темы */}
-                <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8">
+            {/* relative — якорь для absolute; z-0, чтобы ниже центра-меню */}
+            <div className="relative z-0 flex items-center justify-end py-3">
+                {/* Centered nav (desktop). z-10 — поверх всего, чтобы клики доходили */}
+                <nav
+                    role="navigation"
+                    className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8 z-10"
+                >
                     {links.map((l) => (
                         <button
                             key={l.id}
                             onClick={() => onJump(l.id)}
                             className={cx(
-                                "text-[27px] font-medium tracking-normal px-1 transition-colors",
+                                "text-[27px] font-medium tracking-normal px-1 transition-colors cursor-pointer",
                                 active === l.id ? "text-brand" : "text-white/90 hover:text-white"
                             )}
                             aria-current={active === l.id ? "page" : undefined}
@@ -356,26 +367,37 @@ function Navbar({active, onJump, dark, setDark}) {
                     ))}
                 </nav>
 
-                {/* Right actions (desktop) — GitHub + theme toggle */}
-                <div className="hidden md:flex items-center gap-2 ml-auto">
+                {/* Right actions (desktop). Явно ниже по z, чтобы не перекрывать меню */}
+                <div className="hidden md:flex items-center gap-2 ml-auto z-[1]">
+                    <a
+                        href={PROFILE.socials.linkedin}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label="LinkedIn"
+                        className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/10"
+                        title="LinkedIn"
+                    >
+                        <Linkedin className="h-5 w-5" />
+                    </a>
                     <a
                         href={PROFILE.socials.github}
                         target="_blank"
                         rel="noreferrer"
                         aria-label="GitHub"
                         className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/10"
+                        title="GitHub"
                     >
-                        <Github className="h-5 w-5"/>
+                        <Github className="h-5 w-5" />
                     </a>
                     <button
                         aria-label="Toggle theme"
                         className="rounded-full p-2 hover:bg-white/10"
                         onClick={() => setDark((d) => !d)}
+                        title={dark ? "Switch to light theme" : "Switch to dark theme"}
                     >
-                        {dark ? <Sun className="h-5 w-5"/> : <Moon className="h-5 w-5"/>}
+                        {dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
                     </button>
                 </div>
-
 
                 {/* Burger (mobile) */}
                 <button
@@ -383,10 +405,9 @@ function Navbar({active, onJump, dark, setDark}) {
                     onClick={() => setOpen((o) => !o)}
                     aria-label="Toggle menu"
                 >
-                    <ArrowRight className={cx("h-5 w-5 transition", open && "rotate-90")}/>
+                    <ArrowRight className={cx("h-5 w-5 transition", open && "rotate-90")} />
                 </button>
             </div>
-
 
             {/* Mobile dropdown */}
             {open && (
@@ -400,30 +421,41 @@ function Navbar({active, onJump, dark, setDark}) {
                             }}
                             className={cx(
                                 "rounded-full px-3 py-1.5 text-base",
-                                active === l.id
-                                    ? "bg-white/10 text-white"
-                                    : "hover:bg-white/10"
+                                active === l.id ? "bg-white/10 text-white" : "hover:bg-white/10"
                             )}
                         >
                             {l.label}
                         </button>
                     ))}
-                    <a
-                        href={PROFILE.socials.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="GitHub"
-                        className="ml-auto inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/10"
-                    >
-                        <Github className="h-5 w-5"/>
-                    </a>
-                    <button
-                        aria-label="Toggle theme"
-                        className="rounded-full p-2 hover:bg-white/10"
-                        onClick={() => setDark((d) => !d)}
-                    >
-                        {dark ? <Sun className="h-5 w-5"/> : <Moon className="h-5 w-5"/>}
-                    </button>
+                    <span className="ml-auto inline-flex items-center gap-1">
+            <a
+                href={PROFILE.socials.linkedin}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="LinkedIn"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/10"
+                title="LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
+            </a>
+            <a
+                href={PROFILE.socials.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/10"
+                title="GitHub"
+            >
+              <Github className="h-5 w-5" />
+            </a>
+            <button
+                aria-label="Toggle theme"
+                className="rounded-full p-2 hover:bg-white/10"
+                onClick={() => setDark((d) => !d)}
+            >
+              {dark ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </button>
+          </span>
                 </div>
             )}
         </header>
@@ -510,6 +542,23 @@ function SkillsList() {
                 ))}
             </div>
         </Card>
+    );
+}
+
+function SkillsShowcase() {
+    return (
+        <div className="grid gap-10 sm:grid-cols-3">
+            {SKILL_SHOWCASE.map((s) => (
+                <div key={s.title} className="space-y-2">
+                    <div className="text-3xl md:text-4xl font-extrabold tracking-tight">
+                        {s.title}
+                    </div>
+                    <div className="text-[11px] uppercase tracking-widest text-slate-400">
+                        {s.caption}
+                    </div>
+                </div>
+            ))}
+        </div>
     );
 }
 
@@ -647,45 +696,60 @@ function Contact() {
 
     return (
         <div className="grid gap-6 sm:grid-cols-2">
+            {/* Direct contact */}
             <Card>
                 <div className="space-y-3">
-                    <h3 className="text-lg font-semibold">Связаться напрямую</h3>
+                    <h3 className="text-lg font-semibold">Contact directly</h3>
+                    <p className="text-sm text-slate-300">
+                        I’d love to hear about your project and how I can help.
+                    </p>
+
                     <div className="flex flex-col gap-2 text-sm">
-                        <a className="inline-flex items-center gap-2 hover:underline" href={`mailto:${email}`}>
-                            <Mail className="h-4 w-4"/> {email}
+                        <a
+                            className="inline-flex items-center gap-2 hover:underline"
+                            href={`mailto:${email}`}
+                        >
+                            <Mail className="h-4 w-4" /> {email}
                         </a>
-                        <a className="inline-flex items-center gap-2 hover:underline" href={PROFILE.socials.linkedin}
-                           target="_blank" rel="noreferrer">
-                            <Linkedin className="h-4 w-4"/> LinkedIn
+
+                        <a
+                            className="inline-flex items-center gap-2 hover:underline"
+                            href={PROFILE.socials.linkedin}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <Linkedin className="h-4 w-4" /> LinkedIn
                         </a>
-                        <a className="inline-flex items-center gap-2 hover:underline" href={PROFILE.socials.github}
-                           target="_blank" rel="noreferrer">
-                            <Github className="h-4 w-4"/> GitHub
+
+                        <a
+                            className="inline-flex items-center gap-2 hover:underline"
+                            href={PROFILE.socials.github}
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <Github className="h-4 w-4" /> GitHub
                         </a>
                     </div>
-                    <div className="pt-2">
-                        <GhostButton onClick={copyEmail}
-                                     Icon={Mail}>{copied ? "Скопировано!" : "Скопировать email"}</GhostButton>
+
+                    <div className="pt-2 flex flex-wrap gap-3">
+                        <GhostButton onClick={copyEmail} Icon={Mail}>
+                            {copied ? "Copied!" : "Copy email"}
+                        </GhostButton>
+
+                        <PrimaryButton
+                            href={`mailto:${email}?subject=${encodeURIComponent(
+                                "Hi Kristina — let's talk"
+                            )}&body=${encodeURIComponent(
+                                "Hi Kristina,\n\nI found your portfolio and would like to connect.\n\nThanks!"
+                            )}`}
+                            Icon={Mail}
+                        >
+                            Open email client
+                        </PrimaryButton>
                     </div>
                 </div>
             </Card>
 
-            <Card>
-                <div className="space-y-3">
-                    <h3 className="text-lg font-semibold">Мини‑форма (mailto)</h3>
-                    <p className="text-sm text-slate-600 dark:text-slate-300">
-                        Откроет ваш почтовый клиент с темой и телом письма.
-                    </p>
-                    <a
-                        className="inline-flex items-center gap-2 rounded-2xl border border-slate-300 dark:border-slate-700 px-4 py-2 text-sm hover:bg-slate-100/60 dark:hover:bg-slate-800"
-                        href={`mailto:${email}?subject=Hi%20${encodeURIComponent(
-                            PROFILE.name
-                        )}%20—%20давайте%20поговорим&body=Здравствуйте,%20я%20нашёл(а)%20ваше%20портфолио.`}
-                    >
-                        <Mail className="h-4 w-4"/> Написать письмо
-                    </a>
-                </div>
-            </Card>
         </div>
     );
 }
