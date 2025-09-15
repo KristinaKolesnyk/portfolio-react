@@ -37,7 +37,7 @@ const SKILLS = [
     // Frontend
     "React", "TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "Tailwind CSS", "Sass/SCSS",
     // Backend & APIs
-    "Node.js", "Express.js", "REST APIs", "WebSocket",
+    "Node.js", "Express.js", "REST APIs", "WebSocket", "Java (fundamentals/OOP)",
     // Databases & ORM
     "PostgreSQL", "MySQL", "Sequelize", "SQL",
     // Tools & CI/CD
@@ -46,8 +46,6 @@ const SKILLS = [
     "Linux (Ubuntu)", "macOS", "Windows",
     // UX & Practices
     "UX/UI principles", "Accessibility (WCAG basics)", "Performance optimization", "Code review", "Git Flow",
-    // Additional
-    "Java (fundamentals/OOP)",
 ];
 
 const PROJECTS = [
@@ -147,7 +145,7 @@ const scrollToId = (id) => {
 };
 
 // =============== UI PRIMITIVES ===============
-function Shell({children, dark, setDark}) {
+function Shell({children, dark}) {
     return (
         <div className={cx(
             "min-h-dvh font-poppins bg-slate-50 text-ink",
@@ -227,7 +225,7 @@ function LinkGhost({href, children, icon: Icon = ExternalLink}) {
         <a
             href={href}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm hover:underline"
         >
             <Icon className="h-4 w-4"/> {children}
@@ -237,10 +235,9 @@ function LinkGhost({href, children, icon: Icon = ExternalLink}) {
 
 function PrimaryButton({children, onClick, href, Icon = ArrowRight, downloadFileName}) {
     if (href) {
-        // если есть имя — скачиваем; иначе открываем в новой вкладке
         const linkProps = downloadFileName
             ? {href, download: downloadFileName}
-            : {href, target: "_blank", rel: "noreferrer"};
+            : {href, target: "_blank", rel: "noopener noreferrer"};
 
         return (
             <a {...linkProps}
@@ -251,7 +248,7 @@ function PrimaryButton({children, onClick, href, Icon = ArrowRight, downloadFile
     }
 
     return (
-        <button onClick={onClick}
+        <button type="button" onClick={onClick}
                 className="inline-flex items-center gap-2 rounded-2xl shadow-sm bg-brand text-surface2 px-4 py-2 text-sm font-medium hover:translate-y-[-1px] hover:shadow md:text-base">
             {children} <Icon className="h-4 w-4"/>
         </button>
@@ -261,7 +258,7 @@ function PrimaryButton({children, onClick, href, Icon = ArrowRight, downloadFile
 
 function GhostButton({children, onClick, Icon = ArrowRight}) {
     return (
-        <button
+        <button type="button"
             onClick={onClick}
             className="inline-flex items-center gap-2 rounded-2xl shadow-sm border border-brand font-medium px-4 py-2 text-sm hover:bg-ink/5 hover:border-ink transition-colors"        >
             {children} <Icon className="h-4 w-4"/>
@@ -278,10 +275,10 @@ export default function Portfolio() {
 
     useEffect(() => {
         document.title = `${PROFILE.name} — Portfolio`;
-    }, []);
+    }, [PROFILE.name]);
 
     return (
-        <Shell dark={dark} setDark={setDark}>
+        <Shell dark={dark}>
             <Navbar active={active} onJump={scrollToId} dark={dark} setDark={setDark}/>
 
             {/* HERO */}
@@ -379,7 +376,7 @@ function Navbar({active, onJump, dark, setDark}) {
                         className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8 z-10"
                     >
                         {links.map((l) => (
-                            <button
+                            <button type="button"
                                 key={l.id}
                                 onClick={() => onJump(l.id)}
                                 className={cx(
@@ -422,7 +419,7 @@ function Navbar({active, onJump, dark, setDark}) {
                         >
                             <Github className="h-5 w-5"/>
                         </a>
-                        <button
+                        <button type="button"
                             aria-label="Toggle theme"
                             className="rounded-full p-2 hover:bg-ink/10"
                             onClick={() => setDark((d) => !d)}
@@ -433,7 +430,7 @@ function Navbar({active, onJump, dark, setDark}) {
                     </div>
 
                     {/* Burger (mobile) */}
-                    <button
+                    <button type="button"
                         className="md:hidden rounded-full p-2 hover:bg-ink/10 ml-auto"
                         onClick={() => setOpen((o) => !o)}
                         aria-label="Toggle menu"
@@ -446,7 +443,7 @@ function Navbar({active, onJump, dark, setDark}) {
                 {open && (
                     <div className="md:hidden pb-3 flex flex-wrap items-center gap-2">
                         {links.map((l) => (
-                            <button
+                            <button type="button"
                                 key={l.id}
                                 onClick={() => {
                                     onJump(l.id);
@@ -464,7 +461,7 @@ function Navbar({active, onJump, dark, setDark}) {
             <a
                 href={PROFILE.socials.linkedin}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-ink/10"
                 title="LinkedIn"
@@ -474,7 +471,7 @@ function Navbar({active, onJump, dark, setDark}) {
             <a
                 href={PROFILE.socials.github}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="GitHub"
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-ink/10"
                 title="GitHub"
@@ -576,7 +573,7 @@ function Experience() {
                     </div>
                     <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
                         {e.points.map((p, i) => (
-                            <li key={i}>{p}</li>
+                            <li key={`${e.role}-${p}`}>{p}</li>
                         ))}
                     </ul>
                 </Card>
@@ -698,7 +695,7 @@ function Contact() {
                             className="inline-flex items-center gap-2 hover:underline"
                             href={PROFILE.socials.linkedin}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                         >
                             <Linkedin className="h-4 w-4"/> LinkedIn
                         </a>
@@ -707,7 +704,7 @@ function Contact() {
                             className="inline-flex items-center gap-2 hover:underline"
                             href={PROFILE.socials.github}
                             target="_blank"
-                            rel="noreferrer"
+                            rel="noopener noreferrer"
                         >
                             <Github className="h-4 w-4"/> GitHub
                         </a>
