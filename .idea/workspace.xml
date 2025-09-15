@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="view resume">
+    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="click on buttons">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Portfolio.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Portfolio.jsx" afterDir="false" />
     </list>
@@ -76,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757809977934</updated>
-      <workItem from="1757809979027" duration="26743000" />
+      <workItem from="1757809979027" duration="27643000" />
     </task>
     <task id="LOCAL-00001" summary="rearrenged &quot;about&quot; section">
       <option name="closed" value="true" />
@@ -174,7 +174,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757953977551</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="click on buttons">
+      <option name="closed" value="true" />
+      <created>1757954887472</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1757954887472</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -192,6 +200,7 @@
     <MESSAGE value="UI - lines" />
     <MESSAGE value="resume" />
     <MESSAGE value="view resume" />
-    <option name="LAST_COMMIT_MESSAGE" value="view resume" />
+    <MESSAGE value="click on buttons" />
+    <option name="LAST_COMMIT_MESSAGE" value="click on buttons" />
   </component>
 </project>

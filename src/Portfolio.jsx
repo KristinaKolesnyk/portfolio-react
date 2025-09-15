@@ -215,7 +215,7 @@ function HeadlineDivider({text}) {
 function Badge({children}) {
     return (
         <span
-            className="inline-flex items-center rounded-full border border-border px-2.5 py-1 text-xs leading-5 text-ink/80">
+            className="inline-flex items-center rounded-full border border-border px-2.5 py-1 text-sm leading-5 text-ink/80">
       {children}
     </span>
     );
@@ -263,8 +263,7 @@ function GhostButton({children, onClick, Icon = ArrowRight}) {
     return (
         <button
             onClick={onClick}
-            className="inline-flex items-center gap-2 rounded-2xl shadow-sm border border-brand font-medium px-4 py-2 text-sm hover:bg-ink/5"
-        >
+            className="inline-flex items-center gap-2 rounded-2xl shadow-sm border border-brand font-medium px-4 py-2 text-sm hover:bg-ink/5 hover:border-ink transition-colors"        >
             {children} <Icon className="h-4 w-4"/>
         </button>
     );
@@ -443,7 +442,7 @@ function Navbar({active, onJump, dark, setDark}) {
                     </button>
                 </div>
 
-                {/* Mobile dropdown — внутри того же контейнера */}
+                {/* Mobile dropdown */}
                 {open && (
                     <div className="md:hidden pb-3 flex flex-wrap items-center gap-2">
                         {links.map((l) => (
@@ -685,9 +684,7 @@ function Contact() {
             <Card>
                 <div className="space-y-3">
                     <h3 className="text-lg font-semibold">Contact directly</h3>
-                    <p className="text-sm text-muted">
-                        I’d love to hear about your project and how I can help.
-                    </p>
+
 
                     <div className="flex flex-col gap-2 text-sm">
                         <a
