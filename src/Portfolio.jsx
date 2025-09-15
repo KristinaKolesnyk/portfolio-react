@@ -585,21 +585,21 @@ function ProjectsCarousel() {
                         data-card
                         className="snap-start shrink-0 w-[320px] sm:w-[420px] lg:w-[520px]"
                     >
-                        <Card className="p-0 overflow-hidden">
+                        <Card className="p-0 overflow-hidden group ring-brand-soft hover:ring-brand-strong transition-all hover:translate-y-[-1px] hover:shadow">
                             {/* Прямоугольный превью-блок как в макете */}
                             <div className="aspect-[16/9] w-full overflow-hidden">
                                 <img src={p.image} alt={p.title} className="h-full w-full object-cover"/>
                             </div>
 
-                            <div className="p-5 space-y-2">
+                            <div className="p-5 flex flex-col gap-2 min-h-[250px]">
                                 <h3 className="text-xl font-semibold">{p.title}</h3>
-                                <p className="text-sm text-muted">{p.blurb}</p>
+                                <p className="text-sm text-muted line-clamp-4">{p.blurb}</p>
                                 <div className="flex flex-wrap gap-2 pt-1">
                                     {p.tags.map((t) => (
                                         <Badge key={t}>{t}</Badge>
                                     ))}
                                 </div>
-                                <div className="flex items-center gap-4 pt-2">
+                                <div className="flex items-center gap-4 pt-2 mt-auto">
                                     <LinkGhost href={p.demo}>Demo</LinkGhost>
                                     <LinkGhost href={p.repo} icon={Github}>Code</LinkGhost>
                                 </div>
