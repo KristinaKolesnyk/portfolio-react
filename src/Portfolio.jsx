@@ -264,7 +264,7 @@ function GhostButton({children, onClick, Icon = ArrowRight}) {
     return (
         <button
             onClick={onClick}
-            className="inline-flex items-center gap-2 rounded-2xl border border-border px-4 py-2 text-sm hover:bg-ink/5"
+            className="inline-flex items-center gap-2 rounded-2xl shadow-sm border border-brand font-medium px-4 py-2 text-sm hover:bg-ink/5"
         >
             {children} <Icon className="h-4 w-4"/>
         </button>
@@ -506,7 +506,6 @@ function Hero() {
                 </h1>
 
                 <div className="flex flex-wrap items-center gap-4">
-                    {/* Contact Me — Poppins ExtraBold 26, белый */}
                     <a
                         href="#contact"
                         className="text-[26px] font-extrabold text-ink underline underline-offset-[6px]"
@@ -514,13 +513,19 @@ function Hero() {
                         Contact Me
                     </a>
 
-                    <PrimaryButton
-                        href={PROFILE.resumeUrl}
-                        Icon={Download}
-                        downloadFileName="Kristina_Kolesnyk_Resume.pdf"
-                    >
-                        Download Resume
-                    </PrimaryButton>
+                    <div className="flex gap-3">
+                        <PrimaryButton
+                            href={PROFILE.resumeUrl}
+                            Icon={Download}
+                            downloadFileName="Kristina_Kolesnyk_Resume.pdf"
+                        >
+                            Download Resume
+                        </PrimaryButton>
+
+                        <GhostButton onClick={() => window.open(PROFILE.resumeUrl, "_blank", "noopener,noreferrer")}>
+                            View Resume
+                        </GhostButton>
+                    </div>
 
                 </div>
             </div>
