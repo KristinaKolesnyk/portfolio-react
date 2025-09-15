@@ -7,7 +7,6 @@ import {
     Mail,
     Github,
     Linkedin,
-    Globe,
     ExternalLink,
     ArrowRight,
     Moon,
@@ -25,7 +24,7 @@ const PROFILE = {
     location: "Toronto, ON, Canada",
     email: "kkristina.work@gmail.com",
     phone: "+1 (437) 430-9647",
-    resumeUrl: resumePdf, // your resume link
+    resumeUrl: resumePdf,
     socials: {
         github: "https://github.com/KristinaKolesnyk",
         linkedin: "https://www.linkedin.com/in/kristina-kolesnyk/",
@@ -385,9 +384,16 @@ function Navbar({active, onJump, dark, setDark}) {
                                 key={l.id}
                                 onClick={() => onJump(l.id)}
                                 className={cx(
-                                    "text-[17px] font-medium tracking-normal px-1 transition-colors cursor-pointer",
-                                    active === l.id ? "text-brand" : "text-ink/90 hover:text-ink"
+                                    // размер шрифта оставляю как у тебя
+                                    "text-[17px] font-medium px-3 py-1.5 rounded-full",
+                                    // эффект как у иконок:
+                                    "hover:bg-ink/10 active:bg-ink/15 transition-colors",
+                                    // цвет текста всегда одинаковый (без active-логики):
+                                    "text-ink/90 hover:text-ink",
+                                    // клавиатурная доступность
+                                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
                                 )}
+                                // можно оставить aria-current для a11y, оно стилей не меняет
                                 aria-current={active === l.id ? "page" : undefined}
                             >
                                 {l.label}
@@ -449,7 +455,7 @@ function Navbar({active, onJump, dark, setDark}) {
                                 }}
                                 className={cx(
                                     "rounded-full px-3 py-1.5 text-base",
-                                    active === l.id ? "bg-ink/10 text-ink" : "hover:bg-ink/10"
+                                    "hover:bg-ink/10 active:bg-ink/15"
                                 )}
                             >
                                 {l.label}
@@ -739,20 +745,6 @@ function Footer() {
             <div className="flex flex-col items-center justify-between gap-3 sm:flex-row">
                 <div className="text-sm text-muted">
                     © {new Date().getFullYear()} {PROFILE.name}. All rights reserved.
-                </div>
-                <div className="flex items-center gap-3 text-sm">
-                    <a href={PROFILE.socials.github} target="_blank" rel="noreferrer"
-                       className="inline-flex items-center gap-1 hover:underline">
-                        <Github className="h-4 w-4"/> GitHub
-                    </a>
-                    <a href={PROFILE.socials.linkedin} target="_blank" rel="noreferrer"
-                       className="inline-flex items-center gap-1 hover:underline">
-                        <Linkedin className="h-4 w-4"/> LinkedIn
-                    </a>
-                    <a href={PROFILE.socials.website} target="_blank" rel="noreferrer"
-                       className="inline-flex items-center gap-1 hover:underline">
-                        <Globe className="h-4 w-4"/> Website
-                    </a>
                 </div>
             </div>
         </footer>
