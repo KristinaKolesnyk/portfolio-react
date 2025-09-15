@@ -10,8 +10,13 @@ import {Mail, Github, Linkedin, ExternalLink, ArrowRight, Moon, Sun, Download,} 
 const PROFILE = {
     name: "Kristina Kolesnyk",
     role: "Frontend Developer",
-    summary:
-        "Frontend developer focused on making technology simple and enjoyable. I build clean, responsive experiences with React and ship end-to-end features with Node and PostgreSQL — with strong attention to performance, accessibility, and clear communication.",
+    summary: `Frontend Developer focused on making technology simple and enjoyable for people. I build clean,
+responsive web experiences with React and JavaScript and ship end-to-end features with Node
+and PostgreSQL. Committed to performance, accessibility, and clear communication — turning
+complex requirements into simple, maintainable solutions. I take ownership, collaborate closely
+with design and product, and keep users at the center. For me, every project is an opportunity to
+grow and bring value to users.`,
+
     location: "Toronto, ON, Canada",
     email: "kkristina.work@gmail.com",
     phone: "+1 (437) 430-9647",
@@ -250,8 +255,8 @@ function PrimaryButton({children, onClick, href, Icon = ArrowRight, downloadFile
 function GhostButton({children, onClick, Icon = ArrowRight}) {
     return (
         <button type="button"
-            onClick={onClick}
-            className="inline-flex items-center gap-2 rounded-2xl shadow-sm border border-brand font-medium px-4 py-2 text-sm hover:bg-ink/5 hover:border-ink transition-colors"        >
+                onClick={onClick}
+                className="inline-flex items-center gap-2 rounded-2xl shadow-sm border border-brand font-medium px-4 py-2 text-sm hover:bg-ink/5 hover:border-ink transition-colors">
             {children} <Icon className="h-4 w-4"/>
         </button>
     );
@@ -281,10 +286,8 @@ export default function Portfolio() {
             <Section id="about">
                 <HeadlineDivider text="about"/>
                 <Card>
-                    <p className="text-muted">
-                        Frontend developer focused on making technology simple and enjoyable. I build clean, responsive
-                        experiences with React and ship end-to-end features with Node and PostgreSQL — with strong
-                        attention to performance, accessibility, and clear communication.
+                    <p className="text-muted ">
+                        {PROFILE.summary}
                     </p>
                 </Card>
             </Section>
@@ -357,9 +360,7 @@ function Navbar({active, onJump, dark, setDark}) {
     return (
         <header
             className="sticky top-0 z-50 mx-[calc(50%-50vw)] w-screen backdrop-blur bg-surface/70 text-ink border-b border-border/40 overflow-x-clip">
-            {/* внутренний контейнер по сетке сайта */}
             <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-                {/* верхняя строка */}
                 <div className="relative z-0 flex items-center justify-end py-3">
                     {/* Centered nav (desktop) */}
                     <nav
@@ -368,20 +369,15 @@ function Navbar({active, onJump, dark, setDark}) {
                     >
                         {links.map((l) => (
                             <button type="button"
-                                key={l.id}
-                                onClick={() => onJump(l.id)}
-                                className={cx(
-                                    // размер шрифта оставляю как у тебя
-                                    "text-[17px] font-medium px-3 py-1.5 rounded-full",
-                                    // эффект как у иконок:
-                                    "hover:bg-ink/10 active:bg-ink/15 transition-colors",
-                                    // цвет текста всегда одинаковый (без active-логики):
-                                    "text-ink/90 hover:text-ink",
-                                    // клавиатурная доступность
-                                    "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
-                                )}
-                                // можно оставить aria-current для a11y, оно стилей не меняет
-                                aria-current={active === l.id ? "page" : undefined}
+                                    key={l.id}
+                                    onClick={() => onJump(l.id)}
+                                    className={cx(
+                                        "text-[17px] font-medium px-3 py-1.5 rounded-full",
+                                        "hover:bg-ink/10 active:bg-ink/15 transition-colors",
+                                        "text-ink/90 hover:text-ink",
+                                        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand/40"
+                                    )}
+                                    aria-current={active === l.id ? "page" : undefined}
                             >
                                 {l.label}
                             </button>
@@ -411,10 +407,10 @@ function Navbar({active, onJump, dark, setDark}) {
                             <Github className="h-5 w-5"/>
                         </a>
                         <button type="button"
-                            aria-label="Toggle theme"
-                            className="rounded-full p-2 hover:bg-ink/10"
-                            onClick={() => setDark((d) => !d)}
-                            title={dark ? "Switch to light theme" : "Switch to dark theme"}
+                                aria-label="Toggle theme"
+                                className="rounded-full p-2 hover:bg-ink/10"
+                                onClick={() => setDark((d) => !d)}
+                                title={dark ? "Switch to light theme" : "Switch to dark theme"}
                         >
                             {dark ? <Sun className="h-5 w-5"/> : <Moon className="h-5 w-5"/>}
                         </button>
@@ -422,9 +418,9 @@ function Navbar({active, onJump, dark, setDark}) {
 
                     {/* Burger (mobile) */}
                     <button type="button"
-                        className="md:hidden rounded-full p-2 hover:bg-ink/10 ml-auto"
-                        onClick={() => setOpen((o) => !o)}
-                        aria-label="Toggle menu"
+                            className="md:hidden rounded-full p-2 hover:bg-ink/10 ml-auto"
+                            onClick={() => setOpen((o) => !o)}
+                            aria-label="Toggle menu"
                     >
                         <ArrowRight className={cx("h-5 w-5 transition", open && "rotate-90")}/>
                     </button>
@@ -435,15 +431,15 @@ function Navbar({active, onJump, dark, setDark}) {
                     <div className="md:hidden pb-3 flex flex-wrap items-center gap-2">
                         {links.map((l) => (
                             <button type="button"
-                                key={l.id}
-                                onClick={() => {
-                                    onJump(l.id);
-                                    setOpen(false);
-                                }}
-                                className={cx(
-                                    "rounded-full px-3 py-1.5 text-base",
-                                    "hover:bg-ink/10 active:bg-ink/15"
-                                )}
+                                    key={l.id}
+                                    onClick={() => {
+                                        onJump(l.id);
+                                        setOpen(false);
+                                    }}
+                                    className={cx(
+                                        "rounded-full px-3 py-1.5 text-base",
+                                        "hover:bg-ink/10 active:bg-ink/15"
+                                    )}
                             >
                                 {l.label}
                             </button>
@@ -500,12 +496,15 @@ function Hero() {
 
                 <div className="flex flex-wrap items-center gap-4">
                     <button
-                       type="button"
-                       onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" })}
-                       className="text-[26px] font-extrabold text-ink underline underline-offset-[6px]"
-                     >
-                       Contact Me
-                     </button>
+                        type="button"
+                        onClick={() => document.getElementById("contact")?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        })}
+                        className="text-[26px] font-extrabold text-ink underline underline-offset-[6px]"
+                    >
+                        Contact Me
+                    </button>
 
                     <div className="flex gap-3">
                         <PrimaryButton
@@ -587,7 +586,6 @@ function ProjectsCarousel() {
 
     return (
         <div className="relative">
-            {/* Лента */}
             <div
                 ref={scrollerRef}
                 className="
@@ -605,7 +603,6 @@ function ProjectsCarousel() {
                     >
                         <Card
                             className="p-0 overflow-hidden group ring-brand-soft hover:ring-brand-strong transition-all hover:translate-y-[-1px] hover:shadow">
-                            {/* Прямоугольный превью-блок как в макете */}
                             <div className="aspect-[16/9] w-full overflow-hidden">
                                 <img src={p.image} alt={p.title} className="h-full w-full object-cover"/>
                             </div>
@@ -628,7 +625,6 @@ function ProjectsCarousel() {
                 ))}
             </div>
 
-            {/* Навигация (прячем на мобилке, там — свайп) */}
             <button
                 type="button"
                 onClick={scroll("prev")}
