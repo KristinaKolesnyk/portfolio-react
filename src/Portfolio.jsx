@@ -50,12 +50,6 @@ const SKILLS = [
     "Java (fundamentals/OOP)",
 ];
 
-const SKILL_SHOWCASE = [
-    {title: "Frontend", caption: "React, TypeScript, Tailwind, SCSS"},
-    {title: "Backend & APIs", caption: "Node, Express, REST, WebSocket"},
-    {title: "Databases & ORM", caption: "PostgreSQL, MySQL, Sequelize"},
-];
-
 const PROJECTS = [
     {
         title: "Ranker",
@@ -188,16 +182,20 @@ function Section({id, title, eyebrow, children}) {
     );
 }
 
-function Card({className = "", children}) {
+function Card({ className = "", children }) {
     return (
-        <div className={cx(
-            "rounded-2xl shadow-sm ring-1 ring-slate-200/70 dark:ring-slate-800 bg-white/70 dark:bg-slate-800/60 backdrop-blur p-6",
-            className
-        )}>
+        <div
+            className={cx(
+                // рамка и фон теперь через токены
+                "rounded-2xl shadow-sm ring-1 ring-border/60 bg-card/40 backdrop-blur p-6",
+                className
+            )}
+        >
             {children}
         </div>
     );
 }
+
 
 function HeadlineDivider({text}) {
     return (
@@ -210,14 +208,14 @@ function HeadlineDivider({text}) {
     );
 }
 
-function Badge({children}) {
+function Badge({ children }) {
     return (
-        <span
-            className="inline-flex items-center rounded-full border border-slate-200 dark:border-slate-700 px-2.5 py-1 text-xs leading-5">
+        <span className="inline-flex items-center rounded-full border border-border px-2.5 py-1 text-xs leading-5 text-ink/80">
       {children}
     </span>
     );
 }
+
 
 function LinkGhost({href, children, icon: Icon = ExternalLink}) {
     return (

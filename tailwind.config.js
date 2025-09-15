@@ -21,6 +21,7 @@ module.exports = {
                 surface2: withOpacity('--c-surface-2'),
                 border:   withOpacity('--c-border'),
                 muted:    withOpacity('--c-muted'),
+                card:     withOpacity('--c-card'),
             },
         },
     },

@@ -8,7 +8,8 @@
 
     --c-surface: 248 250 252;   /* slate-50 */
     --c-surface-2: 255 255 255; /* white */
-    --c-border: 226 232 240;    /* slate-200 */
+    --c-border: 167 185 210;    /* slate-200 */
+    --c-card: 208 219 230;    /* slate-200 */
     --c-muted: 29 34 43;     /* slate-500 */
 }
 
@@ -20,6 +21,7 @@
     --c-surface: 2 6 23;        /* slate-950 */
     --c-surface-2: 15 23 42;    /* slate-900 */
     --c-border: 30 41 59;       /* slate-800 */
+    --c-card: 53 75 104;       /* slate-800 */
     --c-muted: 240 225 245;     /* slate-400 */
 }
 
