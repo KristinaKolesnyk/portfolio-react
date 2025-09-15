@@ -240,7 +240,7 @@ function PrimaryButton({children, onClick, href, Icon = ArrowRight}) {
     return (
         <Comp
             {...props}
-            className="inline-flex items-center gap-2 rounded-2xl shadow-sm  bg-brand text-surface2 dark:bg-brand dark:text-surface2 px-4 py-2 text-sm font-medium hover:translate-y-[-1px] hover:shadow md:text-base"
+            className="inline-flex items-center gap-2 rounded-2xl shadow-sm bg-brand text-surface2 px-4 py-2 text-sm font-medium hover:translate-y-[-1px] hover:shadow md:text-base"
         >
             {children} <Icon className="h-4 w-4"/>
         </Comp>
@@ -282,7 +282,7 @@ export default function Portfolio() {
             <Section id="about">
                 <HeadlineDivider text="about"/>
                 <Card>
-                    <p className="text-ink-300">
+                    <p className="text-muted">
                         Frontend developer focused on making technology simple and enjoyable. I build clean, responsive experiences with React and ship end-to-end features with Node and PostgreSQL — with strong attention to performance, accessibility, and clear communication.
                     </p>
                 </Card>
@@ -314,11 +314,11 @@ export default function Portfolio() {
                         <Card key={ed.place}>
                             <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                                 <div>
-                                    <div className="text-sm text-ink-500 dark:text-ink-400">{ed.place}</div>
+                                    <div className="text-sm text-muted">{ed.place}</div>
                                     <div className="text-lg font-semibold">{ed.program}</div>
                                 </div>
                                 {ed.period && (
-                                    <div className="text-sm text-ink-500 dark:text-ink-400">{ed.period}</div>
+                                    <div className="text-sm text-muted">{ed.period}</div>
                                 )}
                             </div>
                         </Card>
@@ -341,7 +341,7 @@ export default function Portfolio() {
     );
 }
 
-function Navbar({active, onJump, dark, setDark}) {
+function Navbar({ active, onJump, dark, setDark }) {
     const [open, setOpen] = useState(false);
     const links = [
         {id: "home", label: "Home"},
@@ -354,96 +354,99 @@ function Navbar({active, onJump, dark, setDark}) {
     ];
 
     return (
-        <header className="sticky top-0 z-50 backdrop-blur bg-text-muted text-white border-b border-white/10">
-            {/* relative — якорь для absolute; z-0, чтобы ниже центра-меню */}
-            <div className="relative z-0 flex items-center justify-end py-3">
-                {/* Centered nav (desktop). z-10 — поверх всего, чтобы клики доходили */}
-                <nav
-                    role="navigation"
-                    className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8 z-10"
-                >
-                    {links.map((l) => (
-                        <button
-                            key={l.id}
-                            onClick={() => onJump(l.id)}
-                            className={cx(
-                                "text-[15px] font-medium tracking-normal px-1 transition-colors cursor-pointer",
-                                active === l.id ? "text-brand" : "text-ink/90 hover:text-ink"
-                            )}
-                            aria-current={active === l.id ? "page" : undefined}
-                        >
-                            {l.label}
-                        </button>
-                    ))}
-                </nav>
+        <header
+            className="sticky top-0 z-50 mx-[calc(50%-50vw)] w-screen backdrop-blur bg-surface/70 text-ink border-b border-border/40 overflow-x-clip">
+            {/* внутренний контейнер по сетке сайта */}
+            <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+                {/* верхняя строка */}
+                <div className="relative z-0 flex items-center justify-end py-3">
+                    {/* Centered nav (desktop) */}
+                    <nav
+                        role="navigation"
+                        className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-8 z-10"
+                    >
+                        {links.map((l) => (
+                            <button
+                                key={l.id}
+                                onClick={() => onJump(l.id)}
+                                className={cx(
+                                    "text-[17px] font-medium tracking-normal px-1 transition-colors cursor-pointer",
+                                    active === l.id ? "text-brand" : "text-ink/90 hover:text-ink"
+                                )}
+                                aria-current={active === l.id ? "page" : undefined}
+                            >
+                                {l.label}
+                            </button>
+                        ))}
+                    </nav>
 
-                {/* Right actions (desktop). Явно ниже по z, чтобы не перекрывать меню */}
-                <div className="hidden md:flex items-center gap-2 ml-auto z-[1]">
-                    <a
-                        href={PROFILE.socials.linkedin}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="LinkedIn"
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/10"
-                        title="LinkedIn"
-                    >
-                        <Linkedin className="h-5 w-5"/>
-                    </a>
-                    <a
-                        href={PROFILE.socials.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="GitHub"
-                        className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/10"
-                        title="GitHub"
-                    >
-                        <Github className="h-5 w-5"/>
-                    </a>
+                    {/* Right actions (desktop) */}
+                    <div className="hidden md:flex items-center gap-2 ml-auto z-[1]">
+                        <a
+                            href={PROFILE.socials.linkedin}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="LinkedIn"
+                            className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-ink/10"
+                            title="LinkedIn"
+                        >
+                            <Linkedin className="h-5 w-5"/>
+                        </a>
+                        <a
+                            href={PROFILE.socials.github}
+                            target="_blank"
+                            rel="noreferrer"
+                            aria-label="GitHub"
+                            className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-ink/10"
+                            title="GitHub"
+                        >
+                            <Github className="h-5 w-5"/>
+                        </a>
+                        <button
+                            aria-label="Toggle theme"
+                            className="rounded-full p-2 hover:bg-ink/10"
+                            onClick={() => setDark((d) => !d)}
+                            title={dark ? "Switch to light theme" : "Switch to dark theme"}
+                        >
+                            {dark ? <Sun className="h-5 w-5"/> : <Moon className="h-5 w-5"/>}
+                        </button>
+                    </div>
+
+                    {/* Burger (mobile) */}
                     <button
-                        aria-label="Toggle theme"
-                        className="rounded-full p-2 hover:bg-white/10"
-                        onClick={() => setDark((d) => !d)}
-                        title={dark ? "Switch to light theme" : "Switch to dark theme"}
+                        className="md:hidden rounded-full p-2 hover:bg-ink/10 ml-auto"
+                        onClick={() => setOpen((o) => !o)}
+                        aria-label="Toggle menu"
                     >
-                        {dark ? <Sun className="h-5 w-5"/> : <Moon className="h-5 w-5"/>}
+                        <ArrowRight className={cx("h-5 w-5 transition", open && "rotate-90")}/>
                     </button>
                 </div>
 
-                {/* Burger (mobile) */}
-                <button
-                    className="md:hidden rounded-full p-2 hover:bg-white/10 ml-auto"
-                    onClick={() => setOpen((o) => !o)}
-                    aria-label="Toggle menu"
-                >
-                    <ArrowRight className={cx("h-5 w-5 transition", open && "rotate-90")}/>
-                </button>
-            </div>
-
-            {/* Mobile dropdown */}
-            {open && (
-                <div className="md:hidden pb-3 flex flex-wrap items-center gap-2">
-                    {links.map((l) => (
-                        <button
-                            key={l.id}
-                            onClick={() => {
-                                onJump(l.id);
-                                setOpen(false);
-                            }}
-                            className={cx(
-                                "rounded-full px-3 py-1.5 text-base",
-                                active === l.id ? "bg-white/10 text-white" : "hover:bg-white/10"
-                            )}
-                        >
-                            {l.label}
-                        </button>
-                    ))}
-                    <span className="ml-auto inline-flex items-center gap-1">
+                {/* Mobile dropdown — внутри того же контейнера */}
+                {open && (
+                    <div className="md:hidden pb-3 flex flex-wrap items-center gap-2">
+                        {links.map((l) => (
+                            <button
+                                key={l.id}
+                                onClick={() => {
+                                    onJump(l.id);
+                                    setOpen(false);
+                                }}
+                                className={cx(
+                                    "rounded-full px-3 py-1.5 text-base",
+                                    active === l.id ? "bg-ink/10 text-ink" : "hover:bg-ink/10"
+                                )}
+                            >
+                                {l.label}
+                            </button>
+                        ))}
+                        <span className="ml-auto inline-flex items-center gap-1">
             <a
                 href={PROFILE.socials.linkedin}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/10"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-ink/10"
                 title="LinkedIn"
             >
               <Linkedin className="h-5 w-5"/>
@@ -453,21 +456,22 @@ function Navbar({active, onJump, dark, setDark}) {
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-white/10"
+                className="inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-ink/10"
                 title="GitHub"
             >
               <Github className="h-5 w-5"/>
             </a>
             <button
                 aria-label="Toggle theme"
-                className="rounded-full p-2 hover:bg-white/10"
+                className="rounded-full p-2 hover:bg-ink/10"
                 onClick={() => setDark((d) => !d)}
             >
               {dark ? <Sun className="h-5 w-5"/> : <Moon className="h-5 w-5"/>}
             </button>
           </span>
-                </div>
-            )}
+                    </div>
+                )}
+            </div>
         </header>
     );
 }
@@ -502,7 +506,7 @@ function Hero() {
                 </div>
             </div>
             {/* Right: portrait */}
-            <Card className="relative overflow-hidden bg-slate-800/60">
+            <Card className="relative overflow-hidden">
                 <img
                     src={profileImg}
                     alt="Portrait"
@@ -526,23 +530,6 @@ function SkillsList() {
                 ))}
             </div>
         </Card>
-    );
-}
-
-function SkillsShowcase() {
-    return (
-        <div className="grid gap-10 sm:grid-cols-3">
-            {SKILL_SHOWCASE.map((s) => (
-                <div key={s.title} className="space-y-2">
-                    <div className="text-3xl md:text-4xl font-extrabold tracking-tight">
-                        {s.title}
-                    </div>
-                    <div className="text-[11px] uppercase tracking-widest text-muted">
-                        {s.caption}
-                    </div>
-                </div>
-            ))}
-        </div>
     );
 }
 
@@ -598,7 +585,7 @@ function ProjectsCarousel() {
                         data-card
                         className="snap-start shrink-0 w-[320px] sm:w-[420px] lg:w-[520px]"
                     >
-                        <Card className="p-0 overflow-hidden bg-slate-800/60">
+                        <Card className="p-0 overflow-hidden">
                             {/* Прямоугольный превью-блок как в макете */}
                             <div className="aspect-[16/9] w-full overflow-hidden">
                                 <img src={p.image} alt={p.title} className="h-full w-full object-cover"/>
@@ -628,8 +615,8 @@ function ProjectsCarousel() {
                 onClick={scroll("prev")}
                 aria-label="Previous"
                 className="hidden sm:flex absolute -left-3 top-1/2 -translate-y-1/2 items-center justify-center
-                   h-10 w-10 rounded-full bg-slate-900/70 border border-white/10 backdrop-blur
-                   hover:bg-slate-900/90"
+                   h-10 w-10 rounded-full bg-surface/70 border border-border/40 backdrop-blur
+                   hover:bg-surface"
             >
                 <ArrowRight className="h-5 w-5 -rotate-180"/>
             </button>
@@ -638,8 +625,8 @@ function ProjectsCarousel() {
                 onClick={scroll("next")}
                 aria-label="Next"
                 className="hidden sm:flex absolute -right-3 top-1/2 -translate-y-1/2 items-center justify-center
-                   h-10 w-10 rounded-full bg-slate-900/70 border border-white/10 backdrop-blur
-                   hover:bg-slate-900/90"
+                   h-10 w-10 rounded-full bg-surface/70 border border-border/40 backdrop-blur
+                   hover:bg-surface"
             >
                 <ArrowRight className="h-5 w-5"/>
             </button>
