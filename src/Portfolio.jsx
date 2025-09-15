@@ -1,5 +1,6 @@
 import React, {useEffect, useMemo, useState, useRef} from "react";
 import imgRanker from "./assets/projects/ranker.jpg";
+import resumePdf from "./assets/resume/Kristina_Kolesnyk_Resume.pdf";
 import profileImg from "./assets/profile.jpg";
 import {motion} from "framer-motion";
 import {
@@ -24,7 +25,7 @@ const PROFILE = {
     location: "Toronto, ON, Canada",
     email: "kkristina.work@gmail.com",
     phone: "+1 (437) 430-9647",
-    resumeUrl: "#", // your resume link
+    resumeUrl: resumePdf, // your resume link
     socials: {
         github: "https://github.com/KristinaKolesnyk",
         linkedin: "https://www.linkedin.com/in/kristina-kolesnyk/",
@@ -182,7 +183,7 @@ function Section({id, title, eyebrow, children}) {
     );
 }
 
-function Card({ className = "", children }) {
+function Card({className = "", children}) {
     return (
         <div
             className={cx(
@@ -197,7 +198,7 @@ function Card({ className = "", children }) {
 }
 
 
-function HeadlineDivider({ text }) {
+function HeadlineDivider({text}) {
     return (
         <div className="mb-6 flex items-center gap-6">
             <h2 className="lowercase font-extrabold text-brand text-[48px] sm:text-[60px] lg:text-[75px]">
@@ -212,9 +213,10 @@ function HeadlineDivider({ text }) {
 }
 
 
-function Badge({ children }) {
+function Badge({children}) {
     return (
-        <span className="inline-flex items-center rounded-full border border-border px-2.5 py-1 text-xs leading-5 text-ink/80">
+        <span
+            className="inline-flex items-center rounded-full border border-border px-2.5 py-1 text-xs leading-5 text-ink/80">
       {children}
     </span>
     );
@@ -234,20 +236,29 @@ function LinkGhost({href, children, icon: Icon = ExternalLink}) {
     );
 }
 
-function PrimaryButton({children, onClick, href, Icon = ArrowRight}) {
-    const Comp = href ? "a" : "button";
-    const props = href
-        ? {href, target: "_blank", rel: "noreferrer"}
-        : {onClick};
+function PrimaryButton({children, onClick, href, Icon = ArrowRight, downloadFileName}) {
+    if (href) {
+        // если есть имя — скачиваем; иначе открываем в новой вкладке
+        const linkProps = downloadFileName
+            ? {href, download: downloadFileName}
+            : {href, target: "_blank", rel: "noreferrer"};
+
+        return (
+            <a {...linkProps}
+               className="inline-flex items-center gap-2 rounded-2xl shadow-sm bg-brand text-surface2 px-4 py-2 text-sm font-medium hover:translate-y-[-1px] hover:shadow md:text-base">
+                {children} <Icon className="h-4 w-4"/>
+            </a>
+        );
+    }
+
     return (
-        <Comp
-            {...props}
-            className="inline-flex items-center gap-2 rounded-2xl shadow-sm bg-brand text-surface2 px-4 py-2 text-sm font-medium hover:translate-y-[-1px] hover:shadow md:text-base"
-        >
+        <button onClick={onClick}
+                className="inline-flex items-center gap-2 rounded-2xl shadow-sm bg-brand text-surface2 px-4 py-2 text-sm font-medium hover:translate-y-[-1px] hover:shadow md:text-base">
             {children} <Icon className="h-4 w-4"/>
-        </Comp>
+        </button>
     );
 }
+
 
 function GhostButton({children, onClick, Icon = ArrowRight}) {
     return (
@@ -285,7 +296,9 @@ export default function Portfolio() {
                 <HeadlineDivider text="about"/>
                 <Card>
                     <p className="text-muted">
-                        Frontend developer focused on making technology simple and enjoyable. I build clean, responsive experiences with React and ship end-to-end features with Node and PostgreSQL — with strong attention to performance, accessibility, and clear communication.
+                        Frontend developer focused on making technology simple and enjoyable. I build clean, responsive
+                        experiences with React and ship end-to-end features with Node and PostgreSQL — with strong
+                        attention to performance, accessibility, and clear communication.
                     </p>
                 </Card>
             </Section>
@@ -343,7 +356,7 @@ export default function Portfolio() {
     );
 }
 
-function Navbar({ active, onJump, dark, setDark }) {
+function Navbar({active, onJump, dark, setDark}) {
     const [open, setOpen] = useState(false);
     const links = [
         {id: "home", label: "Home"},
@@ -501,10 +514,14 @@ function Hero() {
                         Contact Me
                     </a>
 
-                    {/* Сохранить кнопку «Download Resume» */}
-                    <PrimaryButton href={PROFILE.resumeUrl} Icon={Download}>
+                    <PrimaryButton
+                        href={PROFILE.resumeUrl}
+                        Icon={Download}
+                        downloadFileName="Kristina_Kolesnyk_Resume.pdf"
+                    >
                         Download Resume
                     </PrimaryButton>
+
                 </div>
             </div>
             {/* Right: portrait */}
@@ -587,7 +604,8 @@ function ProjectsCarousel() {
                         data-card
                         className="snap-start shrink-0 w-[320px] sm:w-[420px] lg:w-[520px]"
                     >
-                        <Card className="p-0 overflow-hidden group ring-brand-soft hover:ring-brand-strong transition-all hover:translate-y-[-1px] hover:shadow">
+                        <Card
+                            className="p-0 overflow-hidden group ring-brand-soft hover:ring-brand-strong transition-all hover:translate-y-[-1px] hover:shadow">
                             {/* Прямоугольный превью-блок как в макете */}
                             <div className="aspect-[16/9] w-full overflow-hidden">
                                 <img src={p.image} alt={p.title} className="h-full w-full object-cover"/>

@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="UI - cards">
+    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="UI - lines">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Portfolio.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Portfolio.jsx" afterDir="false" />
     </list>
@@ -76,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757809977934</updated>
-      <workItem from="1757809979027" duration="23135000" />
+      <workItem from="1757809979027" duration="24205000" />
     </task>
     <task id="LOCAL-00001" summary="rearrenged &quot;about&quot; section">
       <option name="closed" value="true" />
@@ -142,7 +142,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757898814146</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="UI - lines">
+      <option name="closed" value="true" />
+      <created>1757899315713</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1757899315713</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -157,6 +165,7 @@
     <MESSAGE value="navigation bar corrected" />
     <MESSAGE value="resizing cards" />
     <MESSAGE value="UI - cards" />
-    <option name="LAST_COMMIT_MESSAGE" value="UI - cards" />
+    <MESSAGE value="UI - lines" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI - lines" />
   </component>
 </project>
