@@ -1,18 +1,9 @@
-import React, {useEffect, useMemo, useState, useRef} from "react";
+import {useEffect, useMemo, useState, useRef} from "react";
 import imgRanker from "./assets/projects/ranker.jpg";
 import resumePdf from "./assets/resume/Kristina_Kolesnyk_Resume.pdf";
 import profileImg from "./assets/profile.jpg";
 import {motion} from "framer-motion";
-import {
-    Mail,
-    Github,
-    Linkedin,
-    ExternalLink,
-    ArrowRight,
-    Moon,
-    Sun,
-    Download,
-} from "lucide-react";
+import {Mail, Github, Linkedin, ExternalLink, ArrowRight, Moon, Sun, Download,} from "lucide-react";
 
 
 // =============== CONTENT (edit me) ===============
@@ -37,11 +28,11 @@ const SKILLS = [
     // Frontend
     "React", "TypeScript", "JavaScript (ES6+)", "HTML5", "CSS3", "Tailwind CSS", "Sass/SCSS",
     // Backend & APIs
-    "Node.js", "Express.js", "REST APIs", "WebSocket", "Java (fundamentals/OOP)",
+    "Node.js", "Express.js", "REST APIs", "WebSocket", "Java (OOP)",
     // Databases & ORM
     "PostgreSQL", "MySQL", "Sequelize", "SQL",
     // Tools & CI/CD
-    "Git", "GitHub", "GitHub Actions",
+    "Git", "GitHub", "IntelliJ IDEA", "WebStorm", "Visual Studio", "VS Code", "CI/CD pipelines",
     // Environments
     "Linux (Ubuntu)", "macOS", "Windows",
     // UX & Practices
@@ -213,7 +204,7 @@ function HeadlineDivider({text}) {
 function Badge({children}) {
     return (
         <span
-            className="inline-flex items-center rounded-full border border-border px-2.5 py-1 text-sm leading-5 text-ink/80">
+            className="inline-flex items-center rounded-full border border-brand px-2.5 py-1 text-sm leading-5 text-ink/80">
       {children}
     </span>
     );
@@ -508,12 +499,13 @@ function Hero() {
                 </h1>
 
                 <div className="flex flex-wrap items-center gap-4">
-                    <a
-                        href="#contact"
-                        className="text-[26px] font-extrabold text-ink underline underline-offset-[6px]"
-                    >
-                        Contact Me
-                    </a>
+                    <button
+                       type="button"
+                       onClick={() => document.getElementById("contact")?.scrollIntoView({ behavior: "smooth", block: "start" })}
+                       className="text-[26px] font-extrabold text-ink underline underline-offset-[6px]"
+                     >
+                       Contact Me
+                     </button>
 
                     <div className="flex gap-3">
                         <PrimaryButton
@@ -572,7 +564,7 @@ function Experience() {
                         <div className="text-sm text-muted">{e.period}</div>
                     </div>
                     <ul className="mt-3 list-disc space-y-1 pl-5 text-sm">
-                        {e.points.map((p, i) => (
+                        {e.points.map((p) => (
                             <li key={`${e.role}-${p}`}>{p}</li>
                         ))}
                     </ul>
