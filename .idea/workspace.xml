@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="resizing cards">
+    <list default="true" id="8eb81431-e5d7-4b0c-a6cc-dfd7bc734374" name="Changes" comment="UI - cards">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Portfolio.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Portfolio.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +76,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1757809977934</updated>
-      <workItem from="1757809979027" duration="22563000" />
+      <workItem from="1757809979027" duration="23135000" />
     </task>
     <task id="LOCAL-00001" summary="rearrenged &quot;about&quot; section">
       <option name="closed" value="true" />
@@ -136,7 +134,15 @@
       <option name="project" value="LOCAL" />
       <updated>1757897200944</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="UI - cards">
+      <option name="closed" value="true" />
+      <created>1757898814146</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1757898814146</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -150,6 +156,7 @@
     <MESSAGE value="color change" />
     <MESSAGE value="navigation bar corrected" />
     <MESSAGE value="resizing cards" />
-    <option name="LAST_COMMIT_MESSAGE" value="resizing cards" />
+    <MESSAGE value="UI - cards" />
+    <option name="LAST_COMMIT_MESSAGE" value="UI - cards" />
   </component>
 </project>

@@ -197,16 +197,20 @@ function Card({ className = "", children }) {
 }
 
 
-function HeadlineDivider({text}) {
+function HeadlineDivider({ text }) {
     return (
         <div className="mb-6 flex items-center gap-6">
             <h2 className="lowercase font-extrabold text-brand text-[48px] sm:text-[60px] lg:text-[75px]">
                 {text}
             </h2>
-            <div className="h-px flex-1 bg-white/20"></div>
+            <div
+                aria-hidden="true"
+                className="flex-1 h-1 sm:h-0.5 bg-gradient-to-r from-transparent via-brand/80 to-transparent rounded-full"
+            />
         </div>
     );
 }
+
 
 function Badge({ children }) {
     return (
