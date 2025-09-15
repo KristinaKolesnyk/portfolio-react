@@ -275,7 +275,7 @@ export default function Portfolio() {
 
     useEffect(() => {
         document.title = `${PROFILE.name} — Portfolio`;
-    }, [PROFILE.name]);
+    }, []);
 
     return (
         <Shell dark={dark}>
