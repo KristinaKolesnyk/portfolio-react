@@ -1,0 +1,13 @@
+
+@font-face {
+    font-family: 'CONSTANCE Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('CONSTANCE Regular'), url('../components/Constance-7BLXE.woff') format('woff');
+}
+
+h1{
+    font-family: 'CONSTANCE Regular';
+    font-weight: 200;
+    color: #0ccac4
+}
